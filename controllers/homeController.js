@@ -15,14 +15,16 @@ var courses = [
     }
 ];
 
-exports.showHome = (req, res) => {
-    res.render("index");
-};
-exports.showCourses = (req, res) => {
-    res.render("courses", {
-        offeredCourses: courses
-    });
-};
-exports.showSignUp = (req, res) => {
-    res.render("contact");
+module.exports = {
+    showCourses: (req, res) => {
+        res.render("courses", {
+            offeredCourses: courses
+        });
+    },
+    showHome: (req, res) => {
+        res.render("index");
+    },
+    showSignUp: (req, res) => {
+        res.render("contact");
+    }
 };

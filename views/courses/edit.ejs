@@ -1,0 +1,10 @@
+<div class="data-form">
+    <form action="<%= `/courses/${course._id}/update?_method=PUT` %>" method="POST">
+        <h2>Edit course:</h2>
+        <label for="title">Title</label>
+        <input type="text" name="title" value="<%= course.title %>" placeholder="Title" autofocus>
+        <label for="description">Description</label>
+        <input type="text" name="description" value="<%= course.description %>" placeholder="Description" required>
+        <button type="submit">Save</button>
+    </form>
+</div>

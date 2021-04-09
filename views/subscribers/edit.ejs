@@ -1,0 +1,12 @@
+<div class="data-form">
+    <form action="<%= `/subscribers/${subscriber._id}/update?_method=PUT` %>" method="POST">
+        <h2>Edit subscriber:</h2>
+        <label for="name">Name</label>
+        <input type="text" name="name" value="<%= subscriber.name%>" placeholder="Name" autofocus>
+        <label for="email">Email address</label>
+        <input type="email" name="email" value="<%= subscriber.email%>" placeholder="Email address" required>
+        <label for="zipCode">Zip Code</label>
+        <input type="text" name="zipCode" value="<%= subscriber.zipCode%>" pattern="[0-9]{5}" placeholder="Zip Code" required>
+        <button type="submit">Save</button>
+    </form>
+</div>
