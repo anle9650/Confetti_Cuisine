@@ -1,5 +1,7 @@
 const mongoose = require("mongoose"),
     {Schema} = mongoose,
+    passport = require("passport"),
+    passportLocalMongoose = require("passport-local-mongoose"),
     Subscriber = require("./subscriber"),
     userSchema = new Schema({
         name: {
@@ -22,10 +24,6 @@ const mongoose = require("mongoose"),
             type: Number,
             min: [10000, "Zip code too short"],
             max: 99999
-        },
-        password: {
-            type: String,
-            required: true
         },
         courses: [{type: Schema.Types.ObjectId, ref: "Course"}],
         subscribedAccount: {type: Schema.Types.ObjectId, ref: "Subscriber"}
@@ -57,6 +55,10 @@ userSchema.pre("save", function(next) {
     } else {
         next();
     }
+});
+
+userSchema.plugin(passportLocalMongoose, {
+    usernameField: "email"
 });
 
  module.exports = mongoose.model("User", userSchema);   
