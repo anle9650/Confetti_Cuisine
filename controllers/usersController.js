@@ -83,7 +83,7 @@ module.exports = {
     authenticate: passport.authenticate("local", {
         failureRedirect: "/users/login",
         failureFlash: "Failed to login.",
-        successRedirect: "/users/",
+        successRedirect: "/users",
         successFlash: "Logged in!"
     }),
 
