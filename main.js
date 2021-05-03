@@ -11,14 +11,17 @@ const mongoose = require("mongoose"),
   cookieParser = require("cookie-parser"),
   connectFlash = require("connect-flash"),
   expressValidator = require("express-validator"),
-  User = require("./models/user");
+  User = require("./models/user"),
+  morgan = require("morgan");
 
 mongoose.Promise = global.Promise;
 
 mongoose.connect(
-  "mongodb://localhost:27017/confetti_cuisine",
+  process.env.MONGO_URI || "mongodb://localhost:27017/confetti_cuisine",
   {useNewUrlParser: true}
 );
+
+app.use(morgan("combined"));
 
 app.set("port", process.env.PORT || 3000);
 
